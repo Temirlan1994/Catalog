@@ -12,10 +12,7 @@ import java.util.Scanner;
 
 public class CreateProduct {
 
-    public static void main(String[] args) {
-        // id category;
-        // название, стоимость товара
-
+    public void launch(){
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("main");
         EntityManager manager = factory.createEntityManager();
 
@@ -53,7 +50,5 @@ public class CreateProduct {
             manager.getTransaction().rollback();
             e.printStackTrace();
         }
-
-
     }
 }

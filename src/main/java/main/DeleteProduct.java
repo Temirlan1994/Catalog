@@ -9,8 +9,8 @@ import jakarta.persistence.Query;
 import java.util.Scanner;
 
 public class DeleteProduct {
-    public static void main(String[] args) {
 
+    public void launch(){
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("main");
         EntityManager manager = factory.createEntityManager();
 
@@ -24,17 +24,17 @@ public class DeleteProduct {
             Product product = manager.find(Product.class, product_id);
 
             Query query = manager.createQuery(
-                    "delete from Value s where s.product=?1"
+                    "delete from Value v where v.product=?1"
             );
             query.setParameter(1,product);
             query.executeUpdate();
 
-            /*
-            for (Specification specification : product.getSpecifications()) {
-                Specification spec = manager.find(Specification.class, specification.getId());
-                manager.remove(spec);
-            }
-            */
+            query = manager.createQuery(
+                    "delete from Product p where p.id=?1"
+            );
+            query.setParameter(1,product_id);
+            query.executeUpdate();
+
 
             manager.getTransaction().commit();
         } catch (Exception e) {
