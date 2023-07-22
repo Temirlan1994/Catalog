@@ -16,7 +16,7 @@ public class CatalogApplication {
         System.out.println("-Редактирование товара [2]");
         System.out.println("-Удаление товара [3]");
         Scanner sc = new Scanner(System.in);
-        System.out.println("Выберите действие:");
+        System.out.print("Выберите действие:");
         String action = sc.nextLine();
 
         if(action.equals("1")){
