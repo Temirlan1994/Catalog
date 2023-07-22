@@ -7,7 +7,9 @@ import entity.Value;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CreateProduct {
@@ -15,6 +17,19 @@ public class CreateProduct {
     public void launch(){
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("main");
         EntityManager manager = factory.createEntityManager();
+
+        // - Процессоры [1]
+        // - Мониторы [2]
+
+        TypedQuery<String> query = manager.createQuery(
+                "select c.name from Category c", String.class
+        );
+        List<String> categories = query.getResultList();
+        int num = 1;
+        for (String category : categories) {
+            System.out.println("- "+category+" ["+num+"]");
+            num+=1;
+        }
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Введите id категорий: ");

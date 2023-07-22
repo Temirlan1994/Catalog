@@ -1,7 +1,5 @@
 package main;
 
-import entity.Category;
-
 import java.util.Scanner;
 
 public class CatalogApplication {
@@ -19,19 +17,18 @@ public class CatalogApplication {
         System.out.print("Выберите действие:");
         String action = sc.nextLine();
 
-        if(action.equals("1")){
+        if (action.equals("1")) {
             CreateProduct createProduct = new CreateProduct();
             createProduct.launch();
-        }else if(action.equals("2")){
+        } else if (action.equals("2")) {
             ChangeProducts changeProducts = new ChangeProducts();
             changeProducts.launch();
-        }else if(action.equals("3")){
+        } else if (action.equals("3")) {
             DeleteProduct deleteProduct = new DeleteProduct();
             deleteProduct.launch();
-        }else {
+        } else {
             System.out.println("wrong action");
         }
-
 
 
     }
